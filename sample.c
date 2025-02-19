@@ -11,6 +11,7 @@ int main(int argc, char** argv) {
         fprintf(stderr, "Please provide the address of a file as an input.\n");
         return -1;
     }
+    // Use stat instead of system to avoid any command injections
     struct stat st;
     if (stat(argv[1], &st) == 0) {
         printf("Size of %s: %ld bytes\n", argv[1], st.st_size);
